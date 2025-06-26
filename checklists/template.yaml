@@ -1,0 +1,206 @@
+# AI開発コラボレーション チェックリストテンプレート
+# このファイルをコピーして、プロジェクトごとにカスタマイズしてください
+
+metadata:
+  name: "開発チェックリスト"
+  version: "1.0.0"
+  description: "AI開発コラボレーション用の品質確認チェックリスト"
+  created_at: "2024-01-01"
+  tags:
+    - development
+    - ai-collaboration
+    - quality-check
+
+# チェックリストのカテゴリと項目
+categories:
+  - name: "要件理解"
+    id: requirements
+    description: "実装が要件を満たしているか確認"
+    items:
+      - id: req_001
+        question: "実装内容は要求仕様と一致していますか？"
+        severity: high
+        hint: "元の要求事項と実装を比較してください"
+        
+      - id: req_002
+        question: "エッジケースは考慮されていますか？"
+        severity: medium
+        hint: "空の入力、異常な値、境界値などを確認"
+        
+      - id: req_003
+        question: "必要な機能がすべて実装されていますか？"
+        severity: high
+        hint: "要求された機能のリストと照合"
+        
+      - id: req_004
+        question: "新機能開発フレームワークに従ってdocs/features/[機能名]/ディレクトリが作成されていますか？"
+        severity: high
+        hint: "FEATURE_DEVELOPMENT_FRAMEWORK.mdに従った体系的な管理"
+        
+      - id: req_005
+        question: "Phase 1: 要件定義ドキュメント（01_REQUIREMENTS.md）は作成されていますか？"
+        severity: high
+        hint: "ユーザーのやりたいことを要件として定義"
+        
+      - id: req_006
+        question: "Phase 2: アーキテクチャ設計ドキュメント（02_ARCHITECTURE.md）は作成されていますか？"
+        severity: high
+        hint: "技術的な全体像とコンポーネント設計"
+        
+      - id: req_007
+        question: "Phase 3: 実装設計ドキュメント（03_IMPLEMENTATION.md）は作成されていますか？"
+        severity: high
+        hint: "具体的な実装方法の詳細化"
+        
+      - id: req_008
+        question: "Phase 4: 実行計画ドキュメント（04_EXECUTION_PLAN.md）は作成されていますか？"
+        severity: high
+        hint: "タスク分割と実行スケジュール管理"
+        
+      - id: req_009
+        question: "要件から実装まで一貫して追跡可能な状態になっていますか？"
+        severity: medium
+        hint: "各フェーズのドキュメントが相互に参照可能で、変更履歴が追跡できる状態"
+
+  - name: "コード品質"
+    id: code_quality
+    description: "コードの品質と保守性の確認"
+    items:
+      - id: code_001
+        question: "コーディング規約に従っていますか？"
+        severity: medium
+        hint: "プロジェクトのスタイルガイドを確認"
+        
+      - id: code_002
+        question: "適切なエラーハンドリングが実装されていますか？"
+        severity: high
+        hint: "try-catch、エラーメッセージ、ログ出力など"
+        
+      - id: code_003
+        question: "不要なコメントやデバッグコードは削除されていますか？"
+        severity: low
+        hint: "console.log、TODO、一時的なコードなど"
+        
+      - id: code_004
+        question: "関数やクラスは適切な責任範囲で設計されていますか？"
+        severity: medium
+        hint: "単一責任の原則、関数の長さ、複雑度"
+
+  - name: "セキュリティ"
+    id: security
+    description: "セキュリティ上の問題がないか確認"
+    items:
+      - id: sec_001
+        question: "APIキーや認証情報がハードコードされていませんか？"
+        severity: critical
+        hint: "環境変数や設定ファイルを使用"
+        
+      - id: sec_002
+        question: "ユーザー入力の検証は適切ですか？"
+        severity: high
+        hint: "バリデーション、サニタイズ処理"
+        
+      - id: sec_003
+        question: "SQLインジェクション等の脆弱性対策はされていますか？"
+        severity: critical
+        hint: "プリペアドステートメント、パラメータ化クエリ"
+
+  - name: "テスト"
+    id: testing
+    description: "テストとQAの確認"
+    items:
+      - id: test_001
+        question: "単体テストは書かれていますか？"
+        severity: medium
+        hint: "主要な関数やメソッドのテスト"
+        
+      - id: test_002
+        question: "エラーケースのテストは含まれていますか？"
+        severity: medium
+        hint: "異常系のテストケース"
+        
+      - id: test_003
+        question: "実際に動作確認を行いましたか？"
+        severity: high
+        hint: "ローカル環境での動作テスト"
+
+  - name: "パフォーマンス"
+    id: performance
+    description: "パフォーマンスの問題がないか確認"
+    items:
+      - id: perf_001
+        question: "不要なループや重複処理はありませんか？"
+        severity: medium
+        hint: "O(n²)のアルゴリズム、重複したDB呼び出しなど"
+        
+      - id: perf_002
+        question: "適切なデータ構造を使用していますか？"
+        severity: medium
+        hint: "Map vs Array、Set vs Arrayなど"
+        
+      - id: perf_003
+        question: "非同期処理は適切に実装されていますか？"
+        severity: medium
+        hint: "async/await、Promise、並列処理"
+
+  - name: "ドキュメント"
+    id: documentation
+    description: "ドキュメントの確認"
+    items:
+      - id: doc_001
+        question: "READMEやドキュメントは更新されていますか？"
+        severity: low
+        hint: "新機能の説明、使用方法"
+        
+      - id: doc_002
+        question: "複雑な処理には説明コメントがありますか？"
+        severity: medium
+        hint: "アルゴリズム、ビジネスロジックの説明"
+
+  - name: "新機能開発フレームワーク"
+    id: feature_framework
+    description: "新機能開発フレームワークに従っているか確認"
+    items:
+      - id: ff_001
+        question: "docs/FEATURE_DEVELOPMENT_FRAMEWORK.mdは存在し、参照されていますか？"
+        severity: high
+        hint: "フレームワークドキュメントの存在と活用状況"
+        
+      - id: ff_002
+        question: "各フェーズの成果物が適切に文書化されていますか？"
+        severity: high
+        hint: "要件定義、アーキテクチャ設計、実装設計、実行計画の各ドキュメント"
+        
+      - id: ff_003
+        question: "フェーズ間の整合性は保たれていますか？"
+        severity: high
+        hint: "要件→アーキテクチャ→実装→実行計画の流れが論理的に一貫している"
+
+# オプション：自動チェック可能な項目
+automated_checks:
+  - id: auto_001
+    type: "file_exists"
+    target: "README.md"
+    message: "READMEファイルが存在しません"
+    
+  - id: auto_002
+    type: "pattern_not_found"
+    pattern: "console\\.log|debugger"
+    file_pattern: "*.js"
+    message: "デバッグコードが残っています"
+    
+  - id: auto_003
+    type: "pattern_not_found"
+    pattern: "TODO|FIXME|XXX"
+    file_pattern: "*"
+    message: "未完了のTODOコメントがあります"
+    
+  - id: auto_004
+    type: "file_exists"
+    target: "docs/FEATURE_DEVELOPMENT_FRAMEWORK.md"
+    message: "新機能開発フレームワークドキュメントが存在しません"
+    
+  - id: auto_005
+    type: "directory_exists"
+    target: "docs/features/"
+    message: "新機能ドキュメント用ディレクトリが存在しません"
