@@ -1,0 +1,272 @@
+# Phase 4: 実行計画フェーズ チェックリスト
+# このチェックリストは実行計画フェーズで確認すべき項目をまとめたものです
+
+metadata:
+  name: "実行計画フェーズ チェックリスト"
+  version: "1.0.0"
+  description: "新機能開発の実行計画フェーズで使用するチェックリスト"
+  created_at: "2024-01-01"
+  phase: "execution"
+  tags:
+    - execution
+    - phase4
+    - project-management
+
+categories:
+  - name: "マイルストーン設定"
+    id: milestones
+    description: "プロジェクトマイルストーンの確認"
+    items:
+      - id: mile_001
+        question: "主要なマイルストーンは定義されていますか？"
+        severity: critical
+        hint: "設計完了、実装完了、テスト完了、リリース等"
+        
+      - id: mile_002
+        question: "各マイルストーンに明確な期日が設定されていますか？"
+        severity: high
+        hint: "具体的な日付、余裕を持った設定"
+        
+      - id: mile_003
+        question: "マイルストーンごとの成果物は明確ですか？"
+        severity: high
+        hint: "何をもって完了とするかの定義"
+        
+      - id: mile_004
+        question: "マイルストーン間の依存関係は考慮されていますか？"
+        severity: medium
+        hint: "前のマイルストーンの遅延影響"
+
+  - name: "タスク分解（WBS）"
+    id: work_breakdown
+    description: "作業分解構造の確認"
+    items:
+      - id: wbs_001
+        question: "タスクは実行可能な単位まで分解されていますか？"
+        severity: critical
+        hint: "1-3日程度で完了できる粒度"
+        
+      - id: wbs_002
+        question: "各タスクに工数見積もりが設定されていますか？"
+        severity: high
+        hint: "時間単位または日単位の見積もり"
+        
+      - id: wbs_003
+        question: "タスク間の依存関係は明確ですか？"
+        severity: high
+        hint: "前提タスク、並行可能タスクの識別"
+        
+      - id: wbs_004
+        question: "バッファ時間は考慮されていますか？"
+        severity: medium
+        hint: "見積もりの不確実性への対応"
+        
+      - id: wbs_005
+        question: "タスクの優先順位は設定されていますか？"
+        severity: high
+        hint: "クリティカルパスの特定"
+
+  - name: "リソース計画"
+    id: resource_planning
+    description: "必要リソースの確認"
+    items:
+      - id: res_001
+        question: "必要な人的リソースは明確ですか？"
+        severity: critical
+        hint: "開発者、デザイナー、テスター等の人数とスキル"
+        
+      - id: res_002
+        question: "各メンバーの役割と責任は定義されていますか？"
+        severity: high
+        hint: "RACI図等での責任分担"
+        
+      - id: res_003
+        question: "必要なインフラリソースは特定されていますか？"
+        severity: high
+        hint: "サーバー、データベース、外部サービス等"
+        
+      - id: res_004
+        question: "予算計画は作成されていますか？"
+        severity: medium
+        hint: "人件費、インフラ費、ライセンス費等"
+        
+      - id: res_005
+        question: "外部依存（他チーム、ベンダー等）は明確ですか？"
+        severity: high
+        hint: "調整が必要な外部要因"
+
+  - name: "リスク管理"
+    id: risk_management
+    description: "プロジェクトリスクの管理"
+    items:
+      - id: risk_001
+        question: "主要なリスクは識別されていますか？"
+        severity: high
+        hint: "技術リスク、スケジュールリスク、人的リスク"
+        
+      - id: risk_002
+        question: "各リスクの影響度と発生確率は評価されていますか？"
+        severity: high
+        hint: "リスクマトリックスでの評価"
+        
+      - id: risk_003
+        question: "リスク軽減策は定義されていますか？"
+        severity: high
+        hint: "予防策、発生時の対応策"
+        
+      - id: risk_004
+        question: "コンティンジェンシープランは準備されていますか？"
+        severity: medium
+        hint: "最悪のシナリオへの対応計画"
+        
+      - id: risk_005
+        question: "リスクの監視方法は定義されていますか？"
+        severity: medium
+        hint: "定期的なリスクレビュー"
+
+  - name: "コミュニケーション計画"
+    id: communication_plan
+    description: "プロジェクトコミュニケーションの確認"
+    items:
+      - id: comm_001
+        question: "定例会議の頻度と参加者は定義されていますか？"
+        severity: high
+        hint: "デイリー、週次、マイルストーンレビュー等"
+        
+      - id: comm_002
+        question: "ステークホルダーへの報告方法は明確ですか？"
+        severity: high
+        hint: "報告頻度、フォーマット、エスカレーション"
+        
+      - id: comm_003
+        question: "ドキュメント管理方法は定義されていますか？"
+        severity: medium
+        hint: "Wiki、共有ドライブ、バージョン管理"
+        
+      - id: comm_004
+        question: "コミュニケーションツールは決定されていますか？"
+        severity: medium
+        hint: "Slack、Teams、メール等の使い分け"
+        
+      - id: comm_005
+        question: "意思決定プロセスは明確ですか？"
+        severity: high
+        hint: "誰が何を決定するか、承認フロー"
+
+  - name: "品質保証計画"
+    id: quality_assurance
+    description: "品質確保のための計画"
+    items:
+      - id: qa_001
+        question: "コードレビュープロセスは定義されていますか？"
+        severity: high
+        hint: "レビュアー、レビュー基準、承認プロセス"
+        
+      - id: qa_002
+        question: "テスト計画は作成されていますか？"
+        severity: high
+        hint: "テストフェーズ、テスト種別、完了基準"
+        
+      - id: qa_003
+        question: "品質メトリクスは定義されていますか？"
+        severity: medium
+        hint: "カバレッジ、バグ密度、コード品質指標"
+        
+      - id: qa_004
+        question: "受け入れテストの実施計画はありますか？"
+        severity: high
+        hint: "UAT環境、テストシナリオ、参加者"
+
+  - name: "リリース計画"
+    id: release_planning
+    description: "本番リリースに向けた計画"
+    items:
+      - id: rel_001
+        question: "リリース手順は文書化されていますか？"
+        severity: critical
+        hint: "デプロイ手順、設定変更、データ移行"
+        
+      - id: rel_002
+        question: "ロールバック計画は準備されていますか？"
+        severity: critical
+        hint: "問題発生時の切り戻し手順"
+        
+      - id: rel_003
+        question: "リリース判定基準は明確ですか？"
+        severity: high
+        hint: "Go/No-Goの判断基準"
+        
+      - id: rel_004
+        question: "段階的リリース計画はありますか？"
+        severity: medium
+        hint: "カナリアリリース、A/Bテスト等"
+        
+      - id: rel_005
+        question: "リリース後の監視計画は定義されていますか？"
+        severity: high
+        hint: "メトリクス監視、アラート設定"
+
+  - name: "完了条件"
+    id: definition_of_done
+    description: "プロジェクト完了の定義"
+    items:
+      - id: done_001
+        question: "機能要件の完了条件は明確ですか？"
+        severity: critical
+        hint: "すべての要件が実装・テスト済み"
+        
+      - id: done_002
+        question: "非機能要件の達成基準は設定されていますか？"
+        severity: high
+        hint: "性能、セキュリティ、可用性等の基準"
+        
+      - id: done_003
+        question: "ドキュメントの完了基準は定義されていますか？"
+        severity: medium
+        hint: "ユーザーマニュアル、運用手順書等"
+        
+      - id: done_004
+        question: "引き継ぎ計画は作成されていますか？"
+        severity: medium
+        hint: "運用チームへの引き継ぎ、教育計画"
+
+  - name: "進捗管理"
+    id: progress_tracking
+    description: "プロジェクト進捗の追跡方法"
+    items:
+      - id: prog_001
+        question: "進捗報告の方法とタイミングは定義されていますか？"
+        severity: high
+        hint: "バーンダウンチャート、ガントチャート等"
+        
+      - id: prog_002
+        question: "課題管理プロセスは定義されていますか？"
+        severity: high
+        hint: "課題の記録、優先順位付け、解決追跡"
+        
+      - id: prog_003
+        question: "変更管理プロセスは定義されていますか？"
+        severity: high
+        hint: "スコープ変更、仕様変更の承認プロセス"
+        
+      - id: prog_004
+        question: "KPIは設定されていますか？"
+        severity: medium
+        hint: "進捗率、生産性、品質指標等"
+
+# 自動チェック可能な項目
+automated_checks:
+  - id: auto_exec_001
+    type: "section_exists"
+    target: "マイルストーン"
+    message: "マイルストーンセクションが存在しません"
+    
+  - id: auto_exec_002
+    type: "section_exists"
+    target: "タスク分解"
+    message: "WBS（タスク分解）が見つかりません"
+    
+  - id: auto_exec_003
+    type: "risk_table_exists"
+    target: "リスク管理"
+    message: "リスク管理表が含まれていません"
