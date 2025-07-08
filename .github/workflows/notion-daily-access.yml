@@ -1,0 +1,50 @@
+name: Daily Task Organizer Access
+
+on:
+  schedule:
+    # 毎朝9時 JST (UTC 0:00)
+    - cron: '0 0 * * *'
+  # 手動実行を可能にする
+  workflow_dispatch:
+
+jobs:
+  access-notion:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Random Skip Check
+        id: skip_check
+        run: |
+          # 1/3の確率でスキップ (0-2の乱数を生成し、0の場合スキップ)
+          random_num=$((RANDOM % 3))
+          echo "Random number: $random_num"
+          
+          if [ "$random_num" -eq 0 ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "🎲 Skipping access today (1/3 probability)"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "🎲 Will access today"
+          fi
+      
+      - name: Access Google Apps Script Endpoint
+        if: steps.skip_check.outputs.skip != 'true'
+        run: |
+          # Google Apps Scriptエンドポイントにアクセス
+          response=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "User-Agent: GitHub-Actions-Bot" \
+            "https://script.google.com/a/macros/trns.ltd/s/AKfycbyt8d8-FoYuOaUiT7MBxGL4W5Vyl6Xithx-DcyJT2Imp5Xjo2D8fDaUOJJNEtNRuOQ/exec?userName=%E8%93%AE%E8%A6%8B%E5%84%AA%E5%A4%AA")
+          
+          echo "HTTP Response Code: $response"
+          
+          # 成功の確認
+          if [ "$response" = "200" ]; then
+            echo "✅ Successfully accessed Task Organizer"
+          else
+            echo "❌ Failed to access Task Organizer (HTTP $response)"
+            exit 1
+          fi
+      
+      - name: Log Access Time
+        run: |
+          echo "Accessed at: $(TZ=Asia/Tokyo date '+%Y-%m-%d %H:%M:%S JST')"
