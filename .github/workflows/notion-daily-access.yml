@@ -30,18 +30,29 @@ jobs:
       - name: Access Google Apps Script Endpoint
         if: steps.skip_check.outputs.skip != 'true'
         run: |
-          # Google Apps Scriptエンドポイントにアクセス
-          response=$(curl -s -o /dev/null -w "%{http_code}" \
+          # Google Apps Scriptエンドポイントにアクセス（リダイレクトを自動的にフォロー）
+          echo "Accessing Task Organizer..."
+          
+          # curlでリダイレクトを自動的にフォロー (-L オプション)
+          response=$(curl -L -s -o /dev/null -w "%{http_code}" \
             -H "User-Agent: GitHub-Actions-Bot" \
             "https://script.google.com/a/macros/trns.ltd/s/AKfycbyt8d8-FoYuOaUiT7MBxGL4W5Vyl6Xithx-DcyJT2Imp5Xjo2D8fDaUOJJNEtNRuOQ/exec?userName=%E8%93%AE%E8%A6%8B%E5%84%AA%E5%A4%AA")
           
-          echo "HTTP Response Code: $response"
+          echo "Final HTTP Response Code: $response"
           
-          # 成功の確認
+          # リダイレクト先のURLも表示
+          redirect_url=$(curl -s -w "%{redirect_url}" -o /dev/null \
+            "https://script.google.com/a/macros/trns.ltd/s/AKfycbyt8d8-FoYuOaUiT7MBxGL4W5Vyl6Xithx-DcyJT2Imp5Xjo2D8fDaUOJJNEtNRuOQ/exec?userName=%E8%93%AE%E8%A6%8B%E5%84%AA%E5%A4%AA")
+          
+          if [ -n "$redirect_url" ]; then
+            echo "Redirected to: $redirect_url"
+          fi
+          
+          # 成功の確認 (最終的なレスポンスが200 OK)
           if [ "$response" = "200" ]; then
             echo "✅ Successfully accessed Task Organizer"
           else
-            echo "❌ Failed to access Task Organizer (HTTP $response)"
+            echo "❌ Failed to access Task Organizer (Final HTTP $response)"
             exit 1
           fi
       
