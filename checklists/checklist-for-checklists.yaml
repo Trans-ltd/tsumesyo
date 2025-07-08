@@ -1,0 +1,251 @@
+# チェックリスト作成のためのチェックリスト（メタチェックリスト）
+# このチェックリストは、新しいチェックリストを作成する際の品質確認に使用します
+
+metadata:
+  name: "チェックリスト品質確認チェックリスト"
+  version: "2.0.0"
+  description: "チェックリスト自体の品質を確保するためのメタチェックリスト（AI協調開発対応版）"
+  created_at: "2024-01-01"
+  updated_at: "2024-01-15"
+  tags:
+    - meta-checklist
+    - quality-assurance
+    - checklist-design
+    - ai-collaboration
+
+categories:
+  - name: "基本構造"
+    id: basic_structure
+    description: "チェックリストの基本的な構造確認"
+    items:
+      - id: struct_001
+        question: "YAMLファイルの構文は正しいですか？"
+        severity: critical
+        hint: "YAMLパーサーでエラーが出ないことを確認"
+        
+      - id: struct_002
+        question: "metadataセクションは完全に記入されていますか？"
+        severity: high
+        hint: "name, version, description, created_at, tagsの確認"
+        
+      - id: struct_003
+        question: "カテゴリは論理的にグループ化されていますか？"
+        severity: high
+        hint: "関連する項目が同じカテゴリにまとまっているか"
+        
+      - id: struct_004
+        question: "各項目にユニークなIDが設定されていますか？"
+        severity: critical
+        hint: "カテゴリID_連番の形式で重複がないこと"
+
+  - name: "内容の質"
+    id: content_quality
+    description: "チェック項目の内容品質確認"
+    items:
+      - id: content_001
+        question: "各質問は明確で曖昧さがありませんか？"
+        severity: high
+        hint: "Yes/Noで答えられる形式になっているか"
+        
+      - id: content_002
+        question: "質問は具体的で実行可能ですか？"
+        severity: high
+        hint: "抽象的すぎず、確認方法が明確か"
+        
+      - id: content_003
+        question: "ヒントは実際に役立つ情報を提供していますか？"
+        severity: medium
+        hint: "単なる質問の言い換えではなく、確認方法や例を提示"
+        
+      - id: content_004
+        question: "専門用語は適切に使用されていますか？"
+        severity: medium
+        hint: "対象ユーザーが理解できる用語レベルか"
+        
+      - id: content_005
+        question: "否定形の質問を避けていますか？"
+        severity: low
+        hint: "「〜していませんか？」より「〜していますか？」を推奨"
+
+  - name: "カバレッジ"
+    id: coverage
+    description: "チェック項目の網羅性確認"
+    items:
+      - id: cover_001
+        question: "対象領域の重要な観点がすべて含まれていますか？"
+        severity: high
+        hint: "漏れている重要なチェックポイントがないか"
+        
+      - id: cover_002
+        question: "チェック項目の数は適切ですか？"
+        severity: medium
+        hint: "多すぎず少なすぎず、実用的な範囲か"
+        
+      - id: cover_003
+        question: "正常系と異常系の両方をカバーしていますか？"
+        severity: high
+        hint: "成功ケースだけでなく失敗ケースも確認"
+        
+      - id: cover_004
+        question: "エッジケースは考慮されていますか？"
+        severity: medium
+        hint: "境界値、特殊ケース、例外的な状況"
+
+  - name: "重要度設定"
+    id: severity_setting
+    description: "severity（重要度）の適切性確認"
+    items:
+      - id: sev_001
+        question: "criticalは本当に致命的な項目のみに使用されていますか？"
+        severity: high
+        hint: "システム停止、データ損失、セキュリティ侵害レベル"
+        
+      - id: sev_002
+        question: "重要度の分布は適切ですか？"
+        severity: medium
+        hint: "すべてがhighやcriticalになっていないか"
+        
+      - id: sev_003
+        question: "同じカテゴリ内で重要度に一貫性がありますか？"
+        severity: medium
+        hint: "類似項目の重要度が大きく異ならないか"
+
+  - name: "使いやすさ"
+    id: usability
+    description: "チェックリストの使いやすさ確認"
+    items:
+      - id: use_001
+        question: "チェック順序は論理的ですか？"
+        severity: medium
+        hint: "依存関係がある項目の順序、作業フローに沿った配置"
+        
+      - id: use_002
+        question: "カテゴリ名は内容を適切に表現していますか？"
+        severity: medium
+        hint: "一目で何をチェックするカテゴリか分かるか"
+        
+      - id: use_003
+        question: "チェックリストの目的と対象者は明確ですか？"
+        severity: high
+        hint: "metadataのdescriptionで明記されているか"
+        
+      - id: use_004
+        question: "関連するドキュメントへの参照はありますか？"
+        severity: low
+        hint: "詳細な説明が必要な場合の参照先"
+
+  - name: "保守性"
+    id: maintainability
+    description: "チェックリストの保守性確認"
+    items:
+      - id: maint_001
+        question: "バージョン管理の方針は明確ですか？"
+        severity: medium
+        hint: "いつバージョンを上げるか、変更履歴の管理"
+        
+      - id: maint_002
+        question: "項目の追加・削除が容易な構造ですか？"
+        severity: medium
+        hint: "IDの採番ルール、カテゴリの拡張性"
+        
+      - id: maint_003
+        question: "他のチェックリストとの整合性は保たれていますか？"
+        severity: medium
+        hint: "同じプロジェクト内での一貫性"
+        
+      - id: maint_004
+        question: "更新日時やタグは適切に管理されていますか？"
+        severity: low
+        hint: "最終更新日、関連タグの付与"
+
+  - name: "自動化対応"
+    id: automation
+    description: "自動チェック機能の確認"
+    items:
+      - id: auto_001
+        question: "自動チェック可能な項目は automated_checks に定義されていますか？"
+        severity: low
+        hint: "ファイル存在確認、パターンマッチングなど"
+        
+      - id: auto_002
+        question: "自動チェックの定義は実装可能ですか？"
+        severity: low
+        hint: "type、target、patternが適切に設定されているか"
+        
+      - id: auto_003
+        question: "手動チェックと自動チェックのバランスは適切ですか？"
+        severity: low
+        hint: "自動化できるものは自動化、判断が必要なものは手動"
+
+  - name: "プロジェクト固有"
+    id: project_specific
+    description: "プロジェクト特有の要件確認"
+    items:
+      - id: proj_001
+        question: "プロジェクトの開発フローに適合していますか？"
+        severity: high
+        hint: "新機能開発フレームワークとの整合性"
+        
+      - id: proj_002
+        question: "AIとの連携を考慮した構造になっていますか？"
+        severity: medium
+        hint: "Claude Codeが理解・操作しやすい形式"
+        
+      - id: proj_003
+        question: "チェックリストのファイル名は命名規則に従っていますか？"
+        severity: medium
+        hint: "checklist-[用途].yaml または checklist-phase[番号]-[フェーズ名].yaml"
+
+  - name: "AI協調開発対応"
+    id: ai_collaboration_support
+    description: "複数AIによる協調開発への対応確認"
+    items:
+      - id: ai_col_001
+        question: "複数AIが同時に使用することを想定した設計になっていますか？"
+        severity: high
+        hint: "役割分担、並行作業、情報共有の考慮"
+        
+      - id: ai_col_002
+        question: "AI間のコミュニケーションを促進する項目が含まれていますか？"
+        severity: medium
+        hint: "共有すべき情報、引き継ぎ事項、進捗報告の確認"
+        
+      - id: ai_col_003
+        question: "人間とAIの協働を前提とした項目設計になっていますか？"
+        severity: high
+        hint: "人間の判断が必要な部分とAIが自動化できる部分の区別"
+        
+      - id: ai_col_004
+        question: "形式的な監査項目より実用的な開発項目を重視していますか？"
+        severity: medium
+        hint: "実際の開発で役立つ具体的な確認事項"
+        
+      - id: ai_col_005
+        question: "AIが理解しやすい明確な言葉遣いになっていますか？"
+        severity: medium
+        hint: "曖昧な表現や文脈依存の用語を避ける"
+
+# 自動チェック可能な項目
+automated_checks:
+  - id: auto_meta_001
+    type: "yaml_valid"
+    message: "YAMLファイルの構文エラー"
+    
+  - id: auto_meta_002
+    type: "required_sections"
+    sections: ["metadata", "categories"]
+    message: "必須セクションが不足しています"
+    
+  - id: auto_meta_003
+    type: "unique_ids"
+    message: "重複するIDが存在します"
+    
+  - id: auto_meta_004
+    type: "severity_values"
+    valid_values: ["critical", "high", "medium", "low"]
+    message: "無効なseverity値が使用されています"
+    
+  - id: auto_meta_005
+    type: "keyword_exists"
+    keywords: ["AI", "協調", "協働", "複数"]
+    message: "AI協調開発に関する考慮が不足している可能性があります"

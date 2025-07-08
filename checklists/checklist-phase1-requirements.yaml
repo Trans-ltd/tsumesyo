@@ -1,0 +1,253 @@
+# Phase 1: 要件定義フェーズ チェックリスト
+# このチェックリストは要件定義フェーズで確認すべき項目をまとめたものです
+
+metadata:
+  name: "要件定義フェーズ チェックリスト"
+  version: "2.0.0"
+  description: "新機能開発の要件定義フェーズで使用するチェックリスト（AI協調開発対応版）"
+  created_at: "2024-01-01"
+  updated_at: "2024-01-15"
+  phase: "requirements"
+  tags:
+    - requirements
+    - phase1
+    - business-analysis
+    - ai-collaboration
+
+categories:
+  - name: "ビジネス要件"
+    id: business_req
+    description: "ビジネス観点での要件確認"
+    items:
+      - id: breq_001
+        question: "解決しようとしている問題や課題は明確に定義されていますか？"
+        severity: critical
+        hint: "背景セクションで「なぜ」この機能が必要かを確認"
+        
+      - id: breq_002
+        question: "この機能がもたらすビジネス価値は定量的または定性的に示されていますか？"
+        severity: high
+        hint: "ROI、効率化の度合い、ユーザー満足度向上など"
+        
+      - id: breq_003
+        question: "ステークホルダーは明確に特定されていますか？"
+        severity: high
+        hint: "誰が使うのか、誰が影響を受けるのか、複数AIの役割分担も含む"
+        
+      - id: breq_004
+        question: "成功指標（KPI）は測定可能な形で定義されていますか？"
+        severity: high
+        hint: "具体的な数値目標や評価基準"
+
+  - name: "スコープ定義"
+    id: scope_def
+    description: "プロジェクトスコープの明確化"
+    items:
+      - id: scope_001
+        question: "機能の範囲（含むもの/含まないもの）は明確に定義されていますか？"
+        severity: critical
+        hint: "スコープセクションの内容を確認"
+        
+      - id: scope_002
+        question: "フェーズ分けが必要な場合、各フェーズの境界は明確ですか？"
+        severity: medium
+        hint: "MVP、将来拡張などの区分"
+        
+      - id: scope_003
+        question: "既存システムとの境界や連携点は明確ですか？"
+        severity: high
+        hint: "インターフェース、データ連携など"
+
+  - name: "AI協調開発要件"
+    id: ai_collaboration
+    description: "複数AIが協調して開発するための要件"
+    items:
+      - id: ai_001
+        question: "各AIの役割と責任範囲は明確に定義されていますか？"
+        severity: critical
+        hint: "フロントエンド担当、バックエンド担当、テスト担当、レビュー担当など"
+        
+      - id: ai_002
+        question: "AI間のコミュニケーション方法は定義されていますか？"
+        severity: high
+        hint: "共有ドキュメント、コメント規約、進捗報告方法、CLAUDE.mdの活用"
+        
+      - id: ai_003
+        question: "コードの統合方法とコンフリクト解決手順は明確ですか？"
+        severity: high
+        hint: "ブランチ戦略、マージ手順、コードレビュー、同時編集の回避策"
+        
+      - id: ai_004
+        question: "共通のコーディング規約は定義されていますか？"
+        severity: high
+        hint: "命名規則、ディレクトリ構造、コメント規約、import順序など"
+        
+      - id: ai_005
+        question: "タスクの分割と依存関係は明確ですか？"
+        severity: high
+        hint: "並行作業可能な部分、順次作業が必要な部分、待ち合わせポイント"
+
+  - name: "ユーザーストーリー"
+    id: user_stories
+    description: "ユーザー視点での要件確認"
+    items:
+      - id: story_001
+        question: "主要なユーザーストーリーは網羅されていますか？"
+        severity: high
+        hint: "主要なユースケースがカバーされているか"
+        
+      - id: story_002
+        question: "各ストーリーに受け入れ条件が定義されていますか？"
+        severity: high
+        hint: "テスト可能な具体的な条件"
+        
+      - id: story_003
+        question: "ユーザーの立場（As a）、やりたいこと（I want to）、価値（So that）が明確ですか？"
+        severity: medium
+        hint: "標準的なユーザーストーリー形式の確認"
+
+  - name: "機能要件"
+    id: functional_req
+    description: "機能面での要件確認"
+    items:
+      - id: freq_001
+        question: "すべての機能要件に優先度が設定されていますか？"
+        severity: high
+        hint: "Must have / Should have / Nice to have など"
+        
+      - id: freq_002
+        question: "各機能要件は検証可能な形で記述されていますか？"
+        severity: high
+        hint: "曖昧な表現を避け、具体的に記述"
+        
+      - id: freq_003
+        question: "機能間の依存関係は明記されていますか？"
+        severity: medium
+        hint: "実装順序や前提条件の確認"
+
+  - name: "非機能要件"
+    id: non_functional
+    description: "品質特性に関する要件確認"
+    items:
+      - id: nfreq_001
+        question: "パフォーマンス要件（レスポンスタイム、スループット等）は定義されていますか？"
+        severity: high
+        hint: "具体的な数値目標"
+        
+      - id: nfreq_002
+        question: "セキュリティ要件は明確に定義されていますか？"
+        severity: critical
+        hint: "認証、認可、データ保護など"
+        
+      - id: nfreq_003
+        question: "可用性・信頼性要件は定義されていますか？"
+        severity: medium
+        hint: "SLA、稼働率、障害復旧時間など"
+        
+      - id: nfreq_004
+        question: "スケーラビリティ要件は考慮されていますか？"
+        severity: medium
+        hint: "将来的な拡張性、データ量増加への対応"
+
+  - name: "制約事項"
+    id: constraints
+    description: "プロジェクトの制約確認"
+    items:
+      - id: const_001
+        question: "技術的制約（使用技術、既存システムとの整合性等）は明記されていますか？"
+        severity: high
+        hint: "技術スタック、バージョン、互換性など"
+        
+      - id: const_002
+        question: "リソース制約（予算、人員、期限）は明確ですか？"
+        severity: high
+        hint: "現実的な制約の把握"
+        
+      - id: const_003
+        question: "法的・規制要件は確認されていますか？"
+        severity: high
+        hint: "個人情報保護、一般的な法令遵守など"
+
+  - name: "リスクと前提条件"
+    id: risks_assumptions
+    description: "リスクと前提条件の確認"
+    items:
+      - id: risk_001
+        question: "主要なリスクは識別されていますか？"
+        severity: medium
+        hint: "技術的リスク、ビジネスリスクなど"
+        
+      - id: risk_002
+        question: "前提条件や依存関係は明記されていますか？"
+        severity: high
+        hint: "他チーム、外部サービス、データなど"
+
+  - name: "データ要件"
+    id: data_requirements
+    description: "データに関する要件確認"
+    items:
+      - id: data_001
+        question: "必要なデータの種類と形式は定義されていますか？"
+        severity: high
+        hint: "入力データ、出力データ、中間データの形式"
+        
+      - id: data_002
+        question: "データ量の見積もりは行われていますか？"
+        severity: medium
+        hint: "初期データ量、増加率、ピーク時の想定"
+        
+      - id: data_003
+        question: "データの保持期間とアーカイブ方針は定義されていますか？"
+        severity: medium
+        hint: "法的要件、ビジネス要件に基づく保持期間"
+        
+      - id: data_004
+        question: "データの整合性と品質要件は定義されていますか？"
+        severity: high
+        hint: "バリデーション、重複チェック、データクレンジング、複数AIが同じデータを扱う際の一貫性確保"
+
+  - name: "インテグレーション要件"
+    id: integration_req
+    description: "システム連携に関する要件確認"
+    items:
+      - id: integ_001
+        question: "連携する外部システム/APIは全て特定されていますか？"
+        severity: high
+        hint: "システム名、バージョン、エンドポイント、AI間のインターフェースも含む"
+        
+      - id: integ_002
+        question: "連携方式とプロトコルは定義されていますか？"
+        severity: high
+        hint: "REST、GraphQL、メッセージキュー、ファイル連携など"
+        
+      - id: integ_003
+        question: "エラー時のリトライとフォールバック方針は定義されていますか？"
+        severity: medium
+        hint: "タイムアウト、リトライ回数、代替手段"
+
+# 自動チェック可能な項目
+automated_checks:
+  - id: auto_req_001
+    type: "section_exists"
+    target: "ビジネス要件"
+    message: "ビジネス要件セクションが存在しません"
+    
+  - id: auto_req_002
+    type: "section_exists"
+    target: "ユーザーストーリー"
+    message: "ユーザーストーリーセクションが存在しません"
+    
+  - id: auto_req_003
+    type: "keyword_exists"
+    keywords: ["成功指標", "KPI"]
+    message: "成功指標が定義されていません"
+    
+  - id: auto_req_004
+    type: "keyword_exists"
+    keywords: ["AI", "役割", "担当", "分担"]
+    message: "AI協調開発に関する記述がありません"
+    
+  - id: auto_req_005
+    type: "section_exists"
+    target: "開発体制"
+    message: "開発体制（AI役割分担）のセクションが存在しません"

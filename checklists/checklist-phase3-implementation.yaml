@@ -1,0 +1,281 @@
+# Phase 3: 実装設計フェーズ チェックリスト
+# このチェックリストは実装設計フェーズで確認すべき項目をまとめたものです
+
+metadata:
+  name: "実装設計フェーズ チェックリスト"
+  version: "1.0.0"
+  description: "新機能開発の実装設計フェーズで使用するチェックリスト"
+  created_at: "2024-01-01"
+  phase: "implementation"
+  tags:
+    - implementation
+    - phase3
+    - coding-design
+
+categories:
+  - name: "実装方針"
+    id: impl_policy
+    description: "実装の基本方針確認"
+    items:
+      - id: impl_001
+        question: "使用する言語とバージョンは明確に定義されていますか？"
+        severity: critical
+        hint: "Python 3.12、Node.js 20等の具体的なバージョン"
+        
+      - id: impl_002
+        question: "使用するフレームワーク・ライブラリは適切に選定されていますか？"
+        severity: high
+        hint: "選定理由、バージョン、ライセンスの確認"
+        
+      - id: impl_003
+        question: "コーディング規約は定義・参照されていますか？"
+        severity: high
+        hint: "PEP8、ESLint設定、プロジェクト固有ルール等"
+        
+      - id: impl_004
+        question: "開発環境のセットアップ手順は文書化されていますか？"
+        severity: medium
+        hint: "新規参加者がすぐに開発を始められるか"
+
+  - name: "モジュール構成"
+    id: module_structure
+    description: "コード構造とモジュール設計の確認"
+    items:
+      - id: mod_001
+        question: "ディレクトリ構造は論理的で一貫性がありますか？"
+        severity: high
+        hint: "機能別、レイヤー別等の整理方針"
+        
+      - id: mod_002
+        question: "モジュール間の依存関係は明確で循環依存はありませんか？"
+        severity: high
+        hint: "import関係の整理、依存性注入の活用"
+        
+      - id: mod_003
+        question: "各モジュールの責務は明確に分離されていますか？"
+        severity: high
+        hint: "Model、Service、Controller等の役割分担"
+        
+      - id: mod_004
+        question: "共通処理はutilsやhelpersとして適切に切り出されていますか？"
+        severity: medium
+        hint: "DRY原則の適用、再利用性の確保"
+
+  - name: "データモデル実装"
+    id: data_model_impl
+    description: "データモデルの実装詳細確認"
+    items:
+      - id: dmodel_001
+        question: "データモデルクラス/スキーマは定義されていますか？"
+        severity: critical
+        hint: "Pydantic、TypeScript interface等での型定義"
+        
+      - id: dmodel_002
+        question: "バリデーションルールは実装されていますか？"
+        severity: high
+        hint: "入力値の検証、型チェック、範囲チェック"
+        
+      - id: dmodel_003
+        question: "シリアライゼーション/デシリアライゼーションは考慮されていますか？"
+        severity: high
+        hint: "JSON変換、日付フォーマット等"
+        
+      - id: dmodel_004
+        question: "ORMを使用する場合、マッピングは適切ですか？"
+        severity: medium
+        hint: "テーブル定義、リレーション、インデックス"
+
+  - name: "ビジネスロジック"
+    id: business_logic
+    description: "ビジネスロジックの実装確認"
+    items:
+      - id: logic_001
+        question: "ビジネスロジックはプレゼンテーション層から分離されていますか？"
+        severity: high
+        hint: "Service層、UseCase層での実装"
+        
+      - id: logic_002
+        question: "複雑なロジックは適切に関数/メソッドに分割されていますか？"
+        severity: high
+        hint: "単一責任、テスタビリティの確保"
+        
+      - id: logic_003
+        question: "状態管理は適切に設計されていますか？"
+        severity: medium
+        hint: "ステートレス/ステートフルの選択、状態の保持方法"
+        
+      - id: logic_004
+        question: "トランザクション境界は明確に定義されていますか？"
+        severity: high
+        hint: "データ整合性の保証範囲"
+
+  - name: "エラーハンドリング"
+    id: error_handling
+    description: "エラー処理の実装確認"
+    items:
+      - id: err_001
+        question: "例外クラスの階層は適切に設計されていますか？"
+        severity: high
+        hint: "基底例外クラス、業務例外、システム例外の分類"
+        
+      - id: err_002
+        question: "エラーメッセージは一貫性があり、有用な情報を含んでいますか？"
+        severity: high
+        hint: "エラーコード、原因、対処法の提示"
+        
+      - id: err_003
+        question: "リトライ処理は適切に実装されていますか？"
+        severity: medium
+        hint: "リトライ回数、バックオフ戦略"
+        
+      - id: err_004
+        question: "エラーログは適切なレベルで出力されていますか？"
+        severity: high
+        hint: "ERROR、WARN、INFOの使い分け"
+        
+      - id: err_005
+        question: "ユーザー向けエラーと開発者向けエラーは区別されていますか？"
+        severity: medium
+        hint: "エラーメッセージの使い分け、スタックトレースの扱い"
+
+  - name: "外部連携"
+    id: external_integration
+    description: "外部サービス・APIとの連携実装"
+    items:
+      - id: ext_001
+        question: "外部API呼び出しのタイムアウトは設定されていますか？"
+        severity: high
+        hint: "接続タイムアウト、読み取りタイムアウト"
+        
+      - id: ext_002
+        question: "外部サービスの障害に対する対策は実装されていますか？"
+        severity: high
+        hint: "サーキットブレーカー、フォールバック処理"
+        
+      - id: ext_003
+        question: "APIクライアントは適切に抽象化されていますか？"
+        severity: medium
+        hint: "インターフェース定義、モック可能な設計"
+        
+      - id: ext_004
+        question: "認証情報は安全に管理されていますか？"
+        severity: critical
+        hint: "環境変数、シークレット管理サービスの利用"
+
+  - name: "テスト設計"
+    id: test_design
+    description: "テスト戦略と実装の確認"
+    items:
+      - id: test_001
+        question: "単体テストの方針は明確ですか？"
+        severity: high
+        hint: "テストフレームワーク、カバレッジ目標"
+        
+      - id: test_002
+        question: "テストケースは正常系・異常系を網羅していますか？"
+        severity: high
+        hint: "境界値、エラーケース、エッジケース"
+        
+      - id: test_003
+        question: "モックやスタブの使用方針は定義されていますか？"
+        severity: medium
+        hint: "外部依存のモック化、テストダブルの活用"
+        
+      - id: test_004
+        question: "統合テストのシナリオは定義されていますか？"
+        severity: high
+        hint: "主要なユースケースのE2Eテスト"
+        
+      - id: test_005
+        question: "テストデータの管理方法は定義されていますか？"
+        severity: medium
+        hint: "フィクスチャ、ファクトリ、シードデータ"
+
+  - name: "設定管理"
+    id: config_management
+    description: "設定とパラメータ管理の確認"
+    items:
+      - id: conf_001
+        question: "設定値は環境ごとに分離されていますか？"
+        severity: high
+        hint: "開発、ステージング、本番環境の設定分離"
+        
+      - id: conf_002
+        question: "機密情報はコードから分離されていますか？"
+        severity: critical
+        hint: "パスワード、APIキーの外部化"
+        
+      - id: conf_003
+        question: "設定のバリデーションは実装されていますか？"
+        severity: medium
+        hint: "起動時の設定値チェック"
+        
+      - id: conf_004
+        question: "デフォルト値は適切に設定されていますか？"
+        severity: medium
+        hint: "必須設定とオプション設定の区別"
+
+  - name: "ログ・監視"
+    id: logging_monitoring
+    description: "ログ出力と監視の実装確認"
+    items:
+      - id: log_001
+        question: "ログフォーマットは統一されていますか？"
+        severity: high
+        hint: "構造化ログ（JSON）、タイムスタンプ、ログレベル"
+        
+      - id: log_002
+        question: "トレーシングIDは実装されていますか？"
+        severity: medium
+        hint: "リクエストの追跡、分散トレーシング"
+        
+      - id: log_003
+        question: "個人情報はログに含まれないよう配慮されていますか？"
+        severity: critical
+        hint: "パスワード、個人識別情報のマスキング"
+        
+      - id: log_004
+        question: "パフォーマンスメトリクスは計測されていますか？"
+        severity: medium
+        hint: "処理時間、スループット、リソース使用率"
+
+  - name: "コード品質"
+    id: code_quality_impl
+    description: "コード品質の実装レベル確認"
+    items:
+      - id: quality_001
+        question: "Linterの設定は行われていますか？"
+        severity: high
+        hint: "ESLint、Pylint、RuboCop等の設定"
+        
+      - id: quality_002
+        question: "型チェックは有効化されていますか？"
+        severity: medium
+        hint: "TypeScript、mypy、型ヒント等"
+        
+      - id: quality_003
+        question: "コードフォーマッターは設定されていますか？"
+        severity: medium
+        hint: "Prettier、Black、gofmt等"
+        
+      - id: quality_004
+        question: "複雑度の高い関数は避けられていますか？"
+        severity: medium
+        hint: "循環的複雑度、認知的複雑度の管理"
+
+# 自動チェック可能な項目
+automated_checks:
+  - id: auto_impl_001
+    type: "code_structure_exists"
+    target: "src/またはapp/ディレクトリ"
+    message: "ソースコードディレクトリが見つかりません"
+    
+  - id: auto_impl_002
+    type: "test_exists"
+    target: "test/またはtests/ディレクトリ"
+    message: "テストディレクトリが見つかりません"
+    
+  - id: auto_impl_003
+    type: "config_exists"
+    target: "設定ファイル"
+    message: "設定ファイルが見つかりません"
